@@ -1,13 +1,16 @@
 // index.js
 const express = require('express');
 const app = express();
-const morgan = require('morgan');
+app.set('views', './views');
+app.set('view engine', 'ejs');
 
+const morgan = require('morgan');
 app.use(morgan('dev'));
 
 app.get('/', (req, res) => {
-    res.send('Hello From Node.js');
-});
+    res.render('index', { message: 'Hello From Node.js' });
+});   
+
 app.get('/contact', (req, res) => {
     res.send('The Contact Page');
 });
